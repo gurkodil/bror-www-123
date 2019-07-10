@@ -1,0 +1,24 @@
+span.custom-link a {
+    text-decoration: none;
+    margin: 0px;
+}
+
+
+span.custom-link {
+    border-bottom: 1px solid black;
+    color: black;
+    display: inline;
+    padding: 0;
+}
+span.custom-link:before {
+    content:'\A';
+    white-space: pre;
+}
+span.custom-link:after {
+    content:'\A';
+    white-space: pre;
+}
+
+span.custom-link:hover {
+      color: red;
+}

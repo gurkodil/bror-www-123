@@ -2,7 +2,10 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: static/img
+media_library:
+  name: uploadcare
+  config:
+    publicKey: 4a90164ac29b882fc233
 public_folder: /img
 
 collections:
@@ -17,8 +20,22 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: image}
+      - {label: "Featured Image", name: "featuredimage", widget: "image", media_library: { config: { multiple: true, previewStep: false }}}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "project"
+    label: "Project"
+    folder: "src/pages/home"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template key", name: "templateKey", widget: "hidden", default: "projects-page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Include in portfolio", name: "includeInPortfolio", widget: "boolean", default: false}
+      - {label: "Include in menu", name: "includeInMenu", widget: "boolean", default: false}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", media_library: { config: { multiple: false, previewStep: false }}}
+      - {label: "Images", name: "images", widget: "image", media_library: { config: { multiple: true, previewStep: false }}}
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "pages"

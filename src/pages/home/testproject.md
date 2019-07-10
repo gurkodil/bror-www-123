@@ -1,5 +1,5 @@
 ---
-projectKey: project-post
+templateKey: projects-page
 title: Testproject
 includeInPortfolio: true
 includeInMenu: false
