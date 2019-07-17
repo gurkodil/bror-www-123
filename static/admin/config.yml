@@ -8,6 +8,7 @@ media_library:
     publicKey: 4a90164ac29b882fc233
 public_folder: /img
 
+collections:
   - name: "project"
     label: "Projects"
     label_singular: "Project"
