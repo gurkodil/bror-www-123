@@ -1,8 +1,8 @@
 ---
 projectPreviews:
-  - title: Det va gott idag också
   - title: Lax e gott
-  - templateKey: settings-page
-    title: Lax!!!
+  - title: Lax!!!
+  - title: Det va gott idag också
+  - title: 'En till! '
 ---
 
