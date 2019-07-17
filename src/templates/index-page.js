@@ -125,17 +125,23 @@ import redirectTo from 'gatsby-link'
 //     }),
 // }
 
-const SplashPage = () =>
-    <div className="parent" onClick={() => redirectTo('/home/')}>
-        <h1 className="gradient2">Johan Wennerström</h1>
-        <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
-            <source
-                src="media/video/splash_folio.mov"
-                // src="https://files.cargocollective.com/c113847/splash_folio.mov"
-                type="video/mp4" />
-        </video>
+const SplashPage = ({ data }) => {
+    const { markdownRemark } = data
+    const title = markdownRemark.frontmatter.title
+    const videoUrl = markdownRemark.frontmatter.video
 
-    </div>
+    return (
+        <div className="parent" onClick={() => redirectTo('/home/')}>
+            <h1 className="gradient2">{title}</h1>
+            {videoUrl && <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
+                <source
+                    src={videoUrl}
+                    // src="https://files.cargocollective.com/c113847/splash_folio.mov"
+                    type="video/mp4" />
+            </video>}
+
+        </div>)
+}
 
 
 export default SplashPage
