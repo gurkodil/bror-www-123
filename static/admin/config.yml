@@ -61,13 +61,13 @@ collections:
         create: true
         description: "Change order of the gridlayout"
         fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }
           - name: projectPreviews
             label: "Thumnails order"
             label-singluar: "Thumbnail order"
             widget: list
             fields:
-              - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }
-              - [{ label: "Project name", name: "title", widget: "string" }]
+              - { label: "Project name", name: "title", widget: "string" }
 
 
   - name: "pages"
