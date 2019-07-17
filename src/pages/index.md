@@ -1,5 +1,5 @@
 ---
 templateKey: index-page
-title: Johan Wennerström
+title: Johan Wennerstrom
 ---
 
