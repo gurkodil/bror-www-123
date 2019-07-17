@@ -1,4 +1,5 @@
 import React from 'react'
+import redirectTo from 'gatsby-link'
 
 // import Layout from '../components/Layout'
 // import Features from '../components/Features'
@@ -124,13 +125,20 @@ import React from 'react'
 //     }),
 // }
 
-const IndexPage = ({ data }) => {
-    // const { frontmatter } = data.markdownRemark
+const SplashPage = () =>
+    <div className="parent" onClick={() => redirectTo('/home/')}>
+        <h1 className="gradient2">Johan Wennerström</h1>
+        <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
+            <source
+                src="media/video/splash_folio.mov"
+                // src="https://files.cargocollective.com/c113847/splash_folio.mov"
+                type="video/mp4" />
+        </video>
 
-    return (
-        <h1>HELLO!</h1>
-    )
-}
+    </div>
+
+
+export default SplashPage
 
 // IndexPage.propTypes = {
 //     data: PropTypes.shape({
@@ -140,7 +148,6 @@ const IndexPage = ({ data }) => {
 //     }),
 // }
 
-export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {

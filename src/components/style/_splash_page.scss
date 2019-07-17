@@ -1,0 +1,28 @@
+body {
+    .parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: $linkColor;
+        cursor: pointer;
+
+        h1 {
+            color: white;
+            position: absolute;
+            font-size: 5rem;
+            text-decoration: underline;
+            font-weight: 400;
+            font-family: "Nitti Normal", "Lato", sans-serif;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        video {
+            min-width: 80%;
+            min-height: 80%;
+            width: 85%;
+            height: auto;
+        }
+      }
+}
