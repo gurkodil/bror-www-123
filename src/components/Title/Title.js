@@ -1,9 +1,9 @@
 import React from 'react'
-import './title.css'
+import CustomLink from '../helpers/Link/Link'
 
 const Title = () =>
     <div className="title-container">
-        <a href="/home">Johan Wennerström</a>
+        <CustomLink href="/home/">Johan Wennerström</CustomLink>
     </div>
 
 export default Title

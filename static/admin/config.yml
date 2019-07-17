@@ -25,7 +25,8 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "project"
-    label: "Project"
+    label: "Projects"
+    label_singular: "Project"
     folder: "src/pages/home"
     create: true
     slug: "{{slug}}"
@@ -37,6 +38,19 @@ collections:
       - {label: "Thumbnail", name: "thumbnail", widget: "image", media_library: { config: { multiple: false, previewStep: false }}}
       - {label: "Images", name: "images", widget: "image", media_library: { config: { multiple: true, previewStep: false }}}
       - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "grid-order"
+    label: "Grid order"
+    folder: "src/pages/grid-order"
+    fields:
+    - label: LaxLabel
+      name: Lax label
+      widget: relation
+      collection: "project"
+      searchFields: "title"
+      valueField: "title"
+      multiple: true
+
 
   - name: "pages"
     label: "Pages"

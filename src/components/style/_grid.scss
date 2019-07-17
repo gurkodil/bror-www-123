@@ -1,0 +1,50 @@
+body {
+    background-color: white;
+    .grid {
+        overflow: hidden;
+        background-color: white;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        padding-top: 80px;
+
+        figure {
+            cursor: pointer;
+            text-align: center;
+
+            // figcaption {
+            //     margin-top: 0;
+            //     padding: 0.25em;
+            //     color: black;
+            //     font-size: 0.55rem;
+            // }
+        }
+
+        /*
+            `This css is not part of the component
+        */
+        div {
+            div {
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}
+  
+  
+@media screen and (max-width: 770px){
+      .parent > h1 {
+          font-size: 2em;
+      }
+  
+      body {
+          .grid {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    }
+}
+
+

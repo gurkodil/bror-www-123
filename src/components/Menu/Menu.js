@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react'
 import MenuIcon from '../_icons/MenuIcon'
-import './menu.css'
 
 const DialogMenu = ({ onClick }) =>
     <div className="dialogMenu" onClick={onClick}>

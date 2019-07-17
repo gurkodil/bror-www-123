@@ -1,57 +1,89 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import './home-page.css'
 
 import GridLayout from '../../components/helpers/GridLayout'
-import useWindowDimensions from '../../components/helpers/useWindowDimensions'
-import Menu from '../../components/Menu/Menu'
-import Title from '../../components/Title/Title'
+import Layout from '../../components/Layout'
 import AOS from 'aos/dist/aos'
+import { navigateTo } from 'gatsby-link';
 
-AOS.init({
-    offset: 20,
-    duration: 1550,
-})
+class HomePageGrid extends React.Component {
 
-export default ({ data }) => {
-    const { allMarkdownRemark } = data
-    const { width } = useWindowDimensions();
+    constructor(props) {
+        super(props)
+        const { data } = props
+        const { allMarkdownRemark } = data
 
-    const gridItems = allMarkdownRemark.edges.map(edge => {
-        const title = edge.node.frontmatter.title
-        const thumbnail = edge.node.frontmatter.thumbnail
-        const id = edge.node.id
-        return {
-            id,
-            title,
-            thumbnail
+        const gridItems = allMarkdownRemark.edges.map(edge => {
+            const title = edge.node.frontmatter.title
+            const slug = edge.node.fields.slug
+            const thumbnail = edge.node.frontmatter.thumbnail
+            const id = edge.node.id
+            return {
+                id,
+                title,
+                thumbnail,
+                slug
+            }
+        })
+
+        this.state = {
+            windowMounted: false,
+            gridItems
         }
-    })
+    }
 
-    AOS.refresh()
-    let cols = width < 770 ? 2 : 3
-    let gap = cols === 3 ? 5 : 3
+    getWindowDimensions() {
+        const { innerWidth: width, innerHeight: height } = window
+        return {
+            width,
+            height
+        }
+    }
 
-    return (
-        <React.Fragment>
-            <Menu />
-            <Title />
-            <GridLayout columns={cols} gap={gap} className="grid">
-                {gridItems.map((gridItem, index) =>
-                    <div
-                        // onClick={() => history.push(textToReadableUrl(gridItem.title))}
-                        className="gridItem"
-                        key={`gridItenKey${index}`}
-                        style={{ height: 'auto' }}
-                    >
-                        <img data-aos="fade-up" style={{ width: '100%' }} src={gridItem.thumbnail} alt={gridItem.title}></img>
-                        <p data-aos="fade-up">{gridItem.title}</p>
-                    </div>
-                )}
-            </GridLayout>
-        </React.Fragment>
-    )
+    componentDidMount() {
+        AOS.init({
+            offset: 20,
+            duration: 1550,
+        })
+
+        this.setState({
+            windowMounted: true
+        })
+    }
+
+    render() {
+
+        if (!this.state.windowMounted) {
+            return null
+        }
+        AOS.refresh()
+        const { gridItems } = this.state
+        const { width } = this.getWindowDimensions()
+
+        let cols = width < 770 ? 2 : 3
+        let gap = cols === 3 ? 5 : 3
+
+        return (
+            <Layout>
+                <GridLayout columns={cols} gap={gap} className="grid">
+                    {gridItems.map((gridItem, index) =>
+                        <figure onClick={() => navigateTo(gridItem.slug)}
+                            // onClick={() => history.push(textToReadableUrl(gridItem.title))}
+                            // className="gridItem"
+                            key={`gridItenKey${index}`}
+                            style={{ height: 'auto' }}
+                        >
+                            <img data-aos="fade-up" style={{ width: '100%' }} src={gridItem.thumbnail} alt={gridItem.title} />
+                            <figcaption data-aos="fade-up">{gridItem.title}</figcaption>
+                        </figure>
+                    )}
+                </GridLayout>
+            </Layout>
+        )
+    }
 }
+
+export default HomePageGrid
 
 export const allProjectsQuery = graphql`
 query allProjectsQuery {
@@ -59,6 +91,9 @@ query allProjectsQuery {
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             thumbnail

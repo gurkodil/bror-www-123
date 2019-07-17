@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 // import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { graphql, Link } from 'gatsby'
 // import Layout from '../components/Layout'
 import Content from '../components/Content'
-import './project-page.css'
-import Title from '../components/Title/Title'
-import Menu from '../components/Menu/Menu'
+import Layout from '../components/Layout'
 import ArrowIcon from '../components/_icons/ArrowIcon'
 
 
@@ -163,27 +161,30 @@ class ProjectPage extends React.Component {
     render() {
         const { projectImages, imageIndex, isUsingKeys } = this.state
         if (projectImages && projectImages.length > 0) {
-            return (<Fragment>
-                <Title />
-                <Menu />
-                <div className="project-container"
+            return (<Layout>
+                <section className="project-container"
                     onMouseMove={() => this.setState({ isUsingKeys: false })}
                 >
-                    <div className="image-container"
+                    <figure className="image-container"
                         onKeyDown={this.handleKeyPress}
                         style={{ pointerEvents: isUsingKeys ? 'none' : 'auto' }}
                     >
-                        <div className="navigation prev" onClick={this.prevImage}>
-                            <ArrowIcon className={"arrow-icon left"} fill={"red"} />
-                        </div>
-                        <div className="navigation next" onClick={this.nextImage}>
-                            <ArrowIcon className={"arrow-icon right"} fill={"red"} />
-                        </div>
+                        <button
+                            className="navigation prev"
+                            onClick={this.prevImage}>
+                            <ArrowIcon className={"arrow-icon left"} />
+                        </button>
 
-                        <img onClick={this.nextImage} src={projectImages[imageIndex]} alt={imageIndex} />
-                    </div>
-                </div>
-            </Fragment>)
+                        <button
+                            className="navigation next"
+                            onClick={this.nextImage}>
+                            <ArrowIcon className={"arrow-icon right"} />
+                        </button>
+
+                        <img src={projectImages[imageIndex]} alt={imageIndex} />
+                    </figure>
+                </section>
+            </Layout>)
         } else {
             return (<h1>Not found!</h1>)
         }

@@ -1,0 +1,71 @@
+body {
+    .project-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        button {
+            background-color: transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+
+            width: calc(65vw / 2);
+            height: 70vh;
+            overflow: hidden;
+            position: absolute;
+
+            .arrow-icon {
+                opacity: 0;
+                transition: 0.3s ease-in;
+                height: 2rem;
+                margin: 1rem;
+                fill: $linkColor
+            }
+        }
+
+        .image-container {
+            max-width: 100vw;
+            width: 70vw;
+            height: 70vh;
+            cursor: pointer;
+            max-height: 70vh;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            &:hover {
+                .arrow-icon {
+                    opacity: 1;
+                }
+            }
+
+            img {
+                height: 100%;
+                max-width: 100%;
+                user-select: none;
+            }
+    
+            button.next {
+                transform: translateX(50%);
+                text-align: right;
+            }
+    
+            button.prev {
+                transform: translateX(-50%);
+                text-align: left;
+
+                .arrow-icon.left {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}
