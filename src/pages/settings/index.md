@@ -1,6 +1,8 @@
 ---
-templateKey: settings-page
 projectPreviews:
-    - title: Lax e gott
-    - title: Det va gott idag också
+  - title: Det va gott idag också
+  - title: Lax e gott
+  - templateKey: settings-page
+    title: Lax!!!
 ---
+
