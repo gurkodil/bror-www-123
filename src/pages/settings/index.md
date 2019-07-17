@@ -1,4 +1,5 @@
 ---
+templateKey: settings-page
 projectPreviews:
   - title: Lax e gott
   - title: Lax!!!
