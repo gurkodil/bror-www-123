@@ -24,6 +24,7 @@ collections:
       - {label: "Images", name: "images", widget: "image", media_library: { config: { multiple: true, previewStep: false }}}
       - {label: "Tags", name: "tags", widget: "list"}
 
+
   # - name: 'settings'
   #   label: 'Settings'
   #   delete: false # Prevent users from deleting documents in this collection
@@ -65,7 +66,8 @@ collections:
           - name: projectPreviews
             label: "Thumnails order"
             label-singluar: "Thumbnail order"
-            widget: list
+            collection: project
+            widget: order
             fields:
               - { label: "Project name", name: "title", widget: "string" }
 
