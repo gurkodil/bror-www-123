@@ -70,6 +70,8 @@ collections:
             widget: order
             fields:
               - { label: "Project name", name: "title", widget: "string" }
+              - { label: "Thumbnail", name: "thumbnail", widget: "string" }
+
 
 
   - name: "pages"

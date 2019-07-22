@@ -54,8 +54,8 @@ export class OrderWidget extends React.Component {
             console.log("title", title)
 
             return {
-                thumbnail,
                 title,
+                thumbnail
             }
         })
 
@@ -64,8 +64,12 @@ export class OrderWidget extends React.Component {
         const { newOrder, changed } = diff({
             currentOrder,
             data,
-            key: 'thumbnail',
+            key: 'title',
         })
+
+        console.log("NEW ORDER", newOrder)
+        console.log("CHANGED", changed)
+
         this.setState({ data: newOrder })
         if (changed) onChange(newOrder)
     }
@@ -103,8 +107,8 @@ export class OrderWidget extends React.Component {
                         >
                             {data.map((item, i) => (
                                 <Draggable
-                                    key={item.nameKo}
-                                    draggableId={item.nameKo}
+                                    key={item.title}
+                                    draggableId={item.title}
                                     index={i}
                                 >
                                     {(provided, snapshot) => (
@@ -114,7 +118,10 @@ export class OrderWidget extends React.Component {
                                             {...provided.dragHandleProps}
                                             isDragging={snapshot.isDragging}
                                         >
-                                            {item.nameKo} {item.nameEn}
+                                            <figure>
+                                                <img src={item.thumbnail} alt={item.title} />
+                                                <figcaption>{item.title}</figcaption>
+                                            </figure>
                                         </StyledItem>
                                     )}
                                 </Draggable>
