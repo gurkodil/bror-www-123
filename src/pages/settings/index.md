@@ -7,5 +7,7 @@ projectPreviews:
     title: Project 2
   - thumbnail: 'https://ucarecdn.com/27dd9938-0627-4213-b800-372d5a6b6c5f/'
     title: 'Project 3 '
+  - thumbnail: 'https://ucarecdn.com/aaa5fbd0-e383-40c2-b422-36d712fba641/'
+    title: Project 4
 ---
 
