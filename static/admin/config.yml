@@ -17,6 +17,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Template key", name: "templateKey", widget: "hidden", default: "projects-page"}
+      - { name: id, widget: hidden, default: "{{uuid}}" }
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Include in portfolio", name: "includeInPortfolio", widget: "boolean", default: false}
       - {label: "Include in menu", name: "includeInMenu", widget: "boolean", default: false}
@@ -53,24 +54,24 @@ collections:
   - name: "settings"
     label: "Settings"
     delete: false
-    editor:
-      preview: false
     files:
       - name: "grid-order"
         file: "src/pages/settings/index.md"
         label: "Grid order"
-        create: true
+        create: false
         description: "Change order of the gridlayout"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "settings-page" }
           - name: projectPreviews
-            label: "Thumnails order"
+            label: "Thumnail order"
             label-singluar: "Thumbnail order"
             collection: project
+            editor:
+              preview: true
             widget: order
             fields:
-              - { label: "Project name", name: "title", widget: "string" }
               - { label: "Thumbnail", name: "thumbnail", widget: "string" }
+              - { label: "Project name", name: "title", widget: "string" }
 
 
 
@@ -85,11 +86,11 @@ collections:
           - {label: Title, name: title, widget: string}
           - {label: "Video", name: "video", widget: file, required: false, default: "BAD_URL", media_libary: { config: { multiple: false, previewStep: false }}}
 
-      - file: "src/pages/about/index.md"
-        label: "About"
-        name: "about"
+      - file: "src/pages/info/index.md"
+        label: "Info"
+        name: "info"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "info-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/products/index.md"

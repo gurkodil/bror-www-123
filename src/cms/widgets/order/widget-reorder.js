@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import styled from '@emotion/styled'
-
-import { reorder, diff } from './utils'
+import { fromJS } from 'immutable'
+import { reorder, diff } from '../utils'
 
 const StyledBackground = styled.div`
   background: ${({ isDraggingOver }) =>
@@ -16,9 +16,9 @@ const StyledBackground = styled.div`
 
 const StyledItem = styled.div`
   background: #fff;
-  color: #222;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
+  color: #222;  
+  border-radius: 0rem;
+  padding: 0.2rem;
   box-sizing: border-box;
   margin-bottom: 0.25rem;
   box-shadow: ${({ isDragging }) =>
@@ -27,32 +27,20 @@ const StyledItem = styled.div`
             : '0 2px 6px 0 rgba(0, 0, 0, 0.2)'};
 `
 
-export class OrderWidget extends React.Component {
+export default class OrderWidget extends React.Component {
+
     state = {
         data: [],
-        payload: undefined
     }
+
     async componentDidMount() {
         const { query, forID, value, onChange } = this.props
-        console.log("Component did mount!!")
-        console.log("query", query)
-        console.log("forID", forID)
-        console.log("value", value)
-        console.log("onChange", onChange)
 
+        // (forID, 'collectionName', ['idField'],
+        const result = await query(forID, 'project', ['title'], '')
 
-        //                                collection  id field    empty search: return all entries
-        //                                vvvvvvvv    vvvvvvvv   vv
-        const result = await query(forID, 'project', ['identifier'], '')
-
-        console.log("RESULT", result.payload)
         const data = result.payload.response.hits.map(payload => {
-            // useful data to display
-            // vvvvvv
             const { thumbnail, title } = payload.data
-            console.log("THUMBNAIL", thumbnail)
-            console.log("title", title)
-
             return {
                 title,
                 thumbnail
@@ -60,18 +48,14 @@ export class OrderWidget extends React.Component {
         })
 
         const currentOrder = value.toJS()
-        console.log("CURRENT ORDER", currentOrder)
         const { newOrder, changed } = diff({
             currentOrder,
             data,
             key: 'title',
         })
 
-        console.log("NEW ORDER", newOrder)
-        console.log("CHANGED", changed)
-
         this.setState({ data: newOrder })
-        if (changed) onChange(newOrder)
+        onChange(fromJS(newOrder))
     }
 
     handleDragEnd = result => {
@@ -90,12 +74,12 @@ export class OrderWidget extends React.Component {
             data: sortedData,
         })
 
-        onChange(sortedData)
+        onChange(fromJS(sortedData))
     }
 
     render() {
         const { data } = this.state
-        if (data.length === 0) return <div>loading... great stuff</div>
+        if (data.length === 0) return <div>loading...</div>
         return (
             <DragDropContext onDragEnd={this.handleDragEnd}>
                 <Droppable droppableId="droppable">
@@ -118,10 +102,9 @@ export class OrderWidget extends React.Component {
                                             {...provided.dragHandleProps}
                                             isDragging={snapshot.isDragging}
                                         >
-                                            <figure>
-                                                <img src={item.thumbnail} alt={item.title} />
-                                                <figcaption>{item.title}</figcaption>
-                                            </figure>
+                                            <div>
+                                                <img style={{ width: '50px', height: '50px', verticalAlign: 'middle' }} src={item.thumbnail} alt={item.title} />
+                                                <span style={{ margin: '10px' }}>{item.title}</span>                                            </div>
                                         </StyledItem>
                                     )}
                                 </Draggable>

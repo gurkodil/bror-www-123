@@ -32,11 +32,15 @@ AboutPageTemplate.propTypes = {
 }
 
 const AboutPage = ({ data }) => {
-    // const { markdownRemark: post } = data
+    const { markdownRemark: post } = data
+    const title = post.frontmatter.title
+    const html = post.html
 
+    console.log(html)
     return (
         <Layout>
-            <h1>Hello aboutpage!</h1>
+            <h5>{title}</h5>
+            <div dangerouslySetInnerHTML={{__html: html}}></div>
         </Layout>
     )
 }
@@ -48,7 +52,7 @@ AboutPage.propTypes = {
 export default AboutPage
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
+  query InfoPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {

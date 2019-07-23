@@ -1,5 +1,5 @@
 import React from 'react'
-import redirectTo from 'gatsby-link'
+import { navigateTo } from 'gatsby-link'
 
 // import Layout from '../components/Layout'
 // import Features from '../components/Features'
@@ -131,7 +131,7 @@ const SplashPage = ({ data }) => {
     const videoUrl = markdownRemark.frontmatter.video
 
     return (
-        <div className="parent" onClick={() => redirectTo('/home/')}>
+        <div className="parent" onClick={() => navigateTo('/home/')}>
             <h1 className="gradient2">{title}</h1>
             {videoUrl && <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
                 <source
