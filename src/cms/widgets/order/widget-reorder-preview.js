@@ -1,5 +1,7 @@
 import React from 'react'
-import GridLayout from '../../../components/helpers/GridLayout'//' //../../../../components/helpers/GridLayout'
+import GridLayout from '../../../components/helpers/GridLayout'
+
+
 export default class PreviewOrder extends React.Component {
 
     state = {
@@ -8,24 +10,17 @@ export default class PreviewOrder extends React.Component {
 
     componentWillReceiveProps(props) {
         const { value } = props
-        console.log("VALUE", value.toJS())
-        console.log("PROPSFIELD", props.field.toJS())
-        console.log("PROPSENTRY", props.entry.toJS())
+        this.setState({
+            gridItems: value.toJS()
+        })
 
-        if (Array.isArray(value)) {
-            this.setState({
-                gridItems: value
-            })
-        } else {
-            this.setState({
-                gridItems: value.toJS()
-            })
-        }
     }
 
     render() {
         const { gridItems } = this.state
-        if (!gridItems || gridItems.length === 0) {
+        if (!gridItems) {
+            return <p>Loading...</p>
+        } else if (gridItems.length === 0) {
             return <p>No project added yet!</p>
         }
 
@@ -33,7 +28,7 @@ export default class PreviewOrder extends React.Component {
             <GridLayout columns={3} gap={5} className="grid">
                 {gridItems.map((gridItem, index) =>
                     <figure
-                        key={`gridItenKeyla${index}`}
+                        key={`gridKey${index}`}
                         style={{ height: 'auto' }}
                     >
                         <img

@@ -1,0 +1,33 @@
+body {
+    .info-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+
+        .text-container {
+            max-width: 65vw;
+        }
+
+        a, p, i, span {
+            font-size: 14px;
+            line-height: 1.3;
+            text-align: left;
+        }
+    }
+    
+    @media screen and (max-width: 770px){
+        .info-container {
+            .text-container {
+                max-width: 85vw;
+            }
+
+            * {
+                font-size: 12px;
+            }
+        }
+    }
+}

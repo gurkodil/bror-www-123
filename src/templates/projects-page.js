@@ -77,7 +77,6 @@ export const ProjectPostTemplate = ({
 //     }),
 // }
 
-
 export const projectsPageQuery = graphql`
     query ProjectById($id: String!) {
         markdownRemark(id: {eq: $id}) {

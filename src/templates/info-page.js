@@ -2,56 +2,43 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content from '../components/Content'
+import { HTMLContent } from '../components/Content'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-    const PageContent = contentComponent || Content
+export const InfoPageTemplate = ({ title, content, contentComponent }) => {
+    const PageContent = contentComponent || HTMLContent
 
     return (
-        <section className="section section--gradient">
-            <div className="container">
-                <div className="columns">
-                    <div className="column is-10 is-offset-1">
-                        <div className="section">
-                            <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                                {title}
-                            </h2>
-                            <PageContent className="content" content={content} />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section className="info-container">
+            <PageContent className="text-container" content={content} />
         </section>
     )
 }
 
-AboutPageTemplate.propTypes = {
-    title: PropTypes.string.isRequired,
+InfoPageTemplate.propTypes = {
+    title: PropTypes.string,
     content: PropTypes.string,
     contentComponent: PropTypes.func,
 }
 
-const AboutPage = ({ data }) => {
+const InfoPage = ({ data }) => {
     const { markdownRemark: post } = data
-    const title = post.frontmatter.title
     const html = post.html
 
     console.log(html)
     return (
         <Layout>
-            <h5>{title}</h5>
-            <div dangerouslySetInnerHTML={{__html: html}}></div>
+            <InfoPageTemplate content={html} />
         </Layout>
     )
 }
 
-AboutPage.propTypes = {
+InfoPage.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
-export default AboutPage
+export default InfoPage
 
-export const aboutPageQuery = graphql`
+export const infoPageQuery = graphql`
   query InfoPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html

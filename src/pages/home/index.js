@@ -3,8 +3,9 @@ import { graphql } from 'gatsby'
 
 import GridLayout from '../../components/helpers/GridLayout'
 import Layout from '../../components/Layout'
-import AOS from 'aos/dist/aos'
-import { navigateTo } from 'gatsby-link';
+import { navigateTo } from 'gatsby-link'
+import AOS from 'aos'
+import "aos/dist/aos.css"
 
 class HomePageGrid extends React.Component {
 
@@ -13,21 +14,54 @@ class HomePageGrid extends React.Component {
         const { data } = props
         const { allMarkdownRemark } = data
 
-        const gridItems = allMarkdownRemark.edges.map(edge => {
-            const title = edge.node.frontmatter.title
-            const slug = edge.node.fields.slug
-            const thumbnail = edge.node.frontmatter.thumbnail
-            const id = edge.node.id
-            return {
-                id,
-                title,
-                thumbnail,
-                slug
+        AOS.init({
+            offset: 20,
+            duration: 1550,
+        })
+
+        /**
+         * Get all unsorted projects
+         */
+        const gridItems = allMarkdownRemark.edges
+            .filter(edge => /\/home\/[/.a-zA-Z0-9-]+$/.test(edge.node.fields.slug))
+            .map(edge => {
+                const slug = edge.node.fields.slug
+                const title = edge.node.frontmatter.title
+                const thumbnail = edge.node.frontmatter.thumbnail
+                return ({
+                    title,
+                    thumbnail,
+                    slug
+                })
+            })
+
+        /**
+         * Get the order of the projects
+         */
+        const order = allMarkdownRemark.edges
+            .filter(edge => edge.node.fields.slug === "/settings/")
+            .map(edge => edge.node.frontmatter.projectPreviews.map(prev => {
+                return {
+                    title: prev.title
+                }
+            }))
+            .flat()
+
+        /**
+         * Order the projects
+         */
+        order && order.forEach((item, index) => {
+            for (let i = gridItems.length - 1; i >= 0; i--) {
+                if (gridItems[i].title === item.title) {
+                    const elm = gridItems[i]
+
+                    gridItems[i] = gridItems[index]
+                    gridItems[index] = elm
+                }
             }
         })
 
         this.state = {
-            windowMounted: false,
             gridItems
         }
     }
@@ -40,23 +74,11 @@ class HomePageGrid extends React.Component {
         }
     }
 
-    componentDidMount() {
-        AOS.init({
-            offset: 20,
-            duration: 1550,
-        })
-
-        this.setState({
-            windowMounted: true
-        })
+    componentWillReceiveProps() {
+        AOS.refresh()
     }
 
     render() {
-
-        if (!this.state.windowMounted) {
-            return null
-        }
-        AOS.refresh()
         const { gridItems } = this.state
         const { width } = this.getWindowDimensions()
 
@@ -68,9 +90,7 @@ class HomePageGrid extends React.Component {
                 <GridLayout columns={cols} gap={gap} className="grid">
                     {gridItems.map((gridItem, index) =>
                         <figure onClick={() => navigateTo(gridItem.slug)}
-                            // onClick={() => history.push(textToReadableUrl(gridItem.title))}
-                            // className="gridItem"
-                            key={`gridItenKey${index}`}
+                            key={`gridItemKey${index}`}
                             style={{ height: 'auto' }}
                         >
                             <img data-aos="fade-up" style={{ width: '100%' }} src={gridItem.thumbnail} alt={gridItem.title} />
@@ -87,14 +107,17 @@ export default HomePageGrid
 
 export const allProjectsQuery = graphql`
 query allProjectsQuery {
-    allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "projects-page"}}}) {
+    allMarkdownRemark(filter: {frontmatter: {templateKey: {regex: "/(projects|settings)-page/"}}}) {
       edges {
         node {
-          id
           fields {
             slug
           }
           frontmatter {
+            projectPreviews {
+              title
+              thumbnail
+            }
             title
             thumbnail
           }
@@ -103,4 +126,3 @@ query allProjectsQuery {
     }
   }
 `
-

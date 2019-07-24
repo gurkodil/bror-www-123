@@ -7,7 +7,9 @@ import './fonts/nitti.css'
 import './style/all.scss'
 import useSiteMetadata from './SiteMetadata'
 
+
 const TemplateWrapper = ({ children }) => {
+
     const { title, description } = useSiteMetadata()
     return (
         <Fragment>

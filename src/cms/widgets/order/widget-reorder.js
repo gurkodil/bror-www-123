@@ -48,7 +48,7 @@ export default class OrderWidget extends React.Component {
         })
 
         const currentOrder = value.toJS()
-        const { newOrder, changed } = diff({
+        const { newOrder/*, changed*/ } = diff({
             currentOrder,
             data,
             key: 'title',
