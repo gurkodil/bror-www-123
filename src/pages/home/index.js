@@ -14,11 +14,6 @@ class HomePageGrid extends React.Component {
         const { data } = props
         const { allMarkdownRemark } = data
 
-        AOS.init({
-            offset: 20,
-            duration: 1550,
-        })
-
         /**
          * Get all unsorted projects
          */
@@ -64,6 +59,13 @@ class HomePageGrid extends React.Component {
         this.state = {
             gridItems
         }
+    }
+
+    componentDidMount() {
+        AOS.init({
+            offset: 20,
+            duration: 1550,
+        })
     }
 
     getWindowDimensions() {
