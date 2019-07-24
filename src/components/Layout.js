@@ -8,7 +8,7 @@ import './style/all.scss'
 import useSiteMetadata from './SiteMetadata'
 
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, excludeTitle, excludeMenu }) => {
 
     const { title, description } = useSiteMetadata()
     return (
@@ -48,8 +48,8 @@ const TemplateWrapper = ({ children }) => {
                 <meta property="og:url" content="/" />
                 {/* <meta property="og:image" content="/img/og-image.jpg" /> */}
             </Helmet>
-            <Menu />
-            <Title />
+            {!excludeMenu && <Menu />}
+            {!excludeTitle && <Title />}
             <div>{children}</div>
         </Fragment>
     )

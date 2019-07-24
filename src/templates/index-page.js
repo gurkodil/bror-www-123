@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigateTo } from 'gatsby-link'
-
+import Layout from '../components/Layout'
 // import Layout from '../components/Layout'
 // import Features from '../components/Features'
 // import BlogRoll from '../components/BlogRoll'
@@ -131,16 +131,18 @@ const SplashPage = ({ data }) => {
     const videoUrl = markdownRemark.frontmatter.video
 
     return (
-        <div className="parent" onClick={() => navigateTo('/home/')}>
-            <h1 className="gradient2">{title}</h1>
-            {videoUrl && <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
-                <source
-                    src={videoUrl}
-                    // src="https://files.cargocollective.com/c113847/splash_folio.mov"
-                    type="video/mp4" />
-            </video>}
-
-        </div>)
+        <Layout excludeMenu={true} excludeTitle={true}>
+            <div className="parent" onClick={() => navigateTo('/home/')}>
+                <h1 className="gradient2">{title}</h1>
+                {videoUrl && <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">
+                    <source
+                        src={videoUrl}
+                        // src="https://files.cargocollective.com/c113847/splash_folio.mov"
+                        type="video/mp4" />
+                </video>}
+            </div>
+        </Layout>
+    )
 }
 
 

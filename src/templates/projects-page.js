@@ -102,7 +102,7 @@ class ProjectPage extends React.Component {
         this.state = {
             imageIndex: 0,
             projectImages: images,
-            isUsingKeys: false
+            isUsingKeys: true
         }
         this.nextImage = this.nextImage.bind(this)
         this.prevImage = this.prevImage.bind(this);
