@@ -102,7 +102,7 @@ class ProjectPage extends React.Component {
         this.state = {
             imageIndex: 0,
             projectImages: images,
-            isUsingKeys: true
+            isUsingKeys: false
         }
         this.nextImage = this.nextImage.bind(this)
         this.prevImage = this.prevImage.bind(this);
@@ -171,13 +171,13 @@ class ProjectPage extends React.Component {
                         <button
                             className="navigation prev"
                             onClick={this.prevImage}>
-                            <ArrowIcon className={"arrow-icon left"} />
+                            <ArrowIcon show={!isUsingKeys} className={"arrow-icon left"} />
                         </button>
 
                         <button
                             className="navigation next"
                             onClick={this.nextImage}>
-                            <ArrowIcon className={"arrow-icon right"} />
+                            <ArrowIcon show={!isUsingKeys} className={"arrow-icon right"} />
                         </button>
 
                         <img src={projectImages[imageIndex]} alt={imageIndex} />
