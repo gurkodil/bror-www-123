@@ -39,8 +39,7 @@ class HomePageGrid extends React.Component {
                 return {
                     title: prev.title
                 }
-            }))
-            .flat()
+            }))[0]
 
         /**
          * Order the projects
