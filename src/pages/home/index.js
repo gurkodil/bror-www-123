@@ -56,7 +56,8 @@ class HomePageGrid extends React.Component {
         })
 
         this.state = {
-            gridItems
+            gridItems,
+            windowInitialized: false
         }
     }
 
@@ -64,6 +65,10 @@ class HomePageGrid extends React.Component {
         AOS.init({
             offset: 20,
             duration: 1550,
+        })
+
+        this.setState({
+            windowInitialized: true
         })
     }
 
@@ -80,6 +85,7 @@ class HomePageGrid extends React.Component {
     }
 
     render() {
+        if (!this.state.windowInitialized) return null
         const { gridItems } = this.state
         const { width } = this.getWindowDimensions()
 
