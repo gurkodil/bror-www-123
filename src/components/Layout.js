@@ -18,6 +18,11 @@ const TemplateWrapper = ({ children }) => {
                 <title>{title}</title>
                 <meta name="description" content={description} />
 
+                <link
+                    rel="shortcut icon"
+                    type="image"
+                    href="/img/jwd_rd.ico"
+                />
                 {/* <link
                     rel="apple-touch-icon"
                     sizes="180x180"
@@ -29,12 +34,7 @@ const TemplateWrapper = ({ children }) => {
                     href="/img/favicon-32x32.png"
                     sizes="32x32"
                 />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    href="/img/favicon-16x16.png"
-                    sizes="16x16"
-                />
+              
 
                 <link
                     rel="mask-icon"
