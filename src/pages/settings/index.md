@@ -1,8 +1,6 @@
 ---
 templateKey: settings-page
 projectPreviews:
-  - thumbnail: 'https://ucarecdn.com/84a387ff-9e86-4d98-aa4b-c1b4469e61d4/'
-    title: Monocle x Atelier Saman Amel
   - thumbnail: 'https://ucarecdn.com/13acf1b8-ead8-4572-bd3a-3942ac7c2f3b/'
     title: Project 2
   - thumbnail: 'https://ucarecdn.com/aaa5fbd0-e383-40c2-b422-36d712fba641/'
