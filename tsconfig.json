@@ -1,0 +1,48 @@
+// // {
+// //     "compilerOptions": {
+// //         "outDir": "./dist/",
+// //         "sourceMap": true,
+// //         // uncomment the following lines if you are working with a mixed code base (both javascript and typescript. Useful when migrating a project)
+// //         "noImplicitAny": true,
+// //         "allowJs": true,
+// //         "module": "commonjs",
+// //         "target": "esnext",
+// //         "jsx": "preserve",
+// //         "lib": [
+// //             "dom",
+// //             "esnext"
+// //         ]
+// //     },
+// //     "include": [
+// //         "./src/**/*"
+// //     ]
+// // }
+// {
+//     "compilerOptions": {
+//         "module": "commonjs",
+//         "target": "esnext",
+//         "jsx": "preserve",
+//         "lib": [
+//             "dom",
+//             "esnext"
+//         ],
+//         "strict": false,
+//         "noEmit": true,
+//         "isolatedModules": true,
+//         "esModuleInterop": true,
+//         "noUnusedLocals": false,
+//         "noImplicitAny": true,
+//         "allowJs": true,
+//     },
+//     "include": [
+//         "./src/templates/*",
+//         "./src/components/_helpers/*",
+//         "./src/components/_icons/*",
+//         "./src/**/*",
+//     ],
+//     "exclude": [
+//         "node_modules",
+//         "public",
+//         ".cache"
+//     ]
+// }

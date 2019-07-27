@@ -1,8 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 
-const GridLayout = props => {
-    const columnWrapper = {}
+interface GridProps {
+    columns: number,
+    gap: number,
+    children: Array<React.ReactNode>,
+    className: string
+}
+
+const GridLayout = (props: GridProps) => {
+    const columnWrapper: any = {}
     const result = []
     const { className } = props
 
@@ -25,7 +31,6 @@ const GridLayout = props => {
             <div
                 key={`col${i}`}
                 style={{
-                    marginLeft: `${i > 0 ? props.gap : 0}vw`,
                     flex: 1,
                 }}>
                 {columnWrapper[`column${i}`]}
@@ -40,15 +45,7 @@ const GridLayout = props => {
     )
 }
 
-GridLayout.propTypes = {
-    columns: PropTypes.number.isRequired,
-    gap: PropTypes.number.isRequired,
-    children: PropTypes.arrayOf(PropTypes.element),
-}
 
-GridLayout.defaultProps = {
-    columns: 2,
-    gap: 20,
-}
+
 
 export default GridLayout

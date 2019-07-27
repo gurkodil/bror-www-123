@@ -1,14 +1,18 @@
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 // import Footer from '../components/Footer'
-import Menu from '../components/Menu/Menu'
-import Title from '../components/Title/Title'
+import NavBar from './NavBar'
 import './fonts/nitti.css'
 import './style/all.scss'
 import useSiteMetadata from './SiteMetadata'
 
+interface Props {
+    children: any,
+    exludeNavBar?: boolean
+}
 
-const TemplateWrapper = ({ children, excludeTitle, excludeMenu }) => {
+
+const TemplateWrapper = ({ children, exludeNavBar }: Props) => {
 
     const { title, description } = useSiteMetadata()
     return (
@@ -48,8 +52,7 @@ const TemplateWrapper = ({ children, excludeTitle, excludeMenu }) => {
                 <meta property="og:url" content="/" />
                 {/* <meta property="og:image" content="/img/og-image.jpg" /> */}
             </Helmet>
-            {!excludeMenu && <Menu />}
-            {!excludeTitle && <Title />}
+            {!exludeNavBar && <NavBar />}
             <div>{children}</div>
         </Fragment>
     )

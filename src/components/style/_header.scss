@@ -1,0 +1,73 @@
+
+body {
+    header {
+        height: 4rem;
+        position: fixed;
+        display: flex;
+        z-index: 101;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-left: $headerSpacing;
+        margin-right: $headerSpacing;
+        width: 100vw - 2 * $headerSpacing;
+
+        a {
+            font-size: 0.5rem;
+        }
+
+        .menuIcon {
+            width: 1rem;
+            height: 1rem;
+            z-index: 102;
+            
+            &:hover {
+                cursor: pointer
+            }
+        }
+
+        .fa-menu-close {
+            transform: rotate(45deg);
+            transition: transform 250ms ease-in;
+    
+            &:hover {
+                fill: $hoverLinkColor;
+            }
+        }
+    
+        .fa-menu.open{
+            transform: rotate(0deg);
+            transition: transform 250ms ease-in;
+            &:hover {
+                fill: $linkColor;
+            }
+        }
+
+    }
+
+     /* Modal content */
+     .dialogMenu {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        position: fixed;
+        top:0;
+        left:0;
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: $linkColor;
+
+        a {
+            font-size: 0.85rem;
+            color: #000 !important;
+            line-height: 1.4;
+            padding: 3px;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

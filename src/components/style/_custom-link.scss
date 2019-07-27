@@ -1,0 +1,24 @@
+body {
+    span.custom-link {
+        border-bottom: 1px solid black;
+        color: black;
+        display: inline-block;
+        height: auto;
+
+        a {
+        text-decoration: none;
+        }
+
+        &:before {
+            white-space: pre;
+        }
+
+        &:after {
+            white-space: pre;
+        }
+
+        &:hover {
+            color: red;
+        }
+    }
+}

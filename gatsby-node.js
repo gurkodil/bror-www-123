@@ -33,17 +33,25 @@ exports.createPages = ({ actions, graphql }) => {
 
         posts.forEach(edge => {
             const id = edge.node.id
+            const slug = edge.node.fields.slug
+            console.log(slug)
+            if (slug === "/settings/") return;
             createPage({
-                path: edge.node.fields.slug,
+                path: slug,
                 tags: edge.node.frontmatter.tags,
                 component: path.resolve(
-                    `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+                    `src/templates/${String(edge.node.frontmatter.templateKey)}${edge.node.frontmatter.templateKey === 'idsanfo-page' ? '.tsx' : '.js'}`
                 ),
                 // additional data can be passed via context
                 context: {
                     id,
                 },
             })
+        })
+
+        createPage({
+            path: "/portfolio/",
+            component: path.resolve(`src/templates/portfolio-page.tsx`)
         })
 
         // // Tag pages:

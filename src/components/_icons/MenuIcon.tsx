@@ -1,6 +1,13 @@
 import React from 'react'
 
-export default ({ fill, width, height, className, onClick }) =>
+
+export default ({
+    fill,
+    width,
+    height,
+    className,
+    onClick
+}: React.SVGAttributes<SVGSVGElement>) =>
     <svg
         onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"

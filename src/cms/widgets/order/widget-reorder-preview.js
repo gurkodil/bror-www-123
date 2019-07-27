@@ -1,5 +1,5 @@
 import React from 'react'
-import GridLayout from '../../../components/helpers/GridLayout'
+import GridLayout from '../../../components/GridLayout'
 
 
 export default class PreviewOrder extends React.Component {
@@ -8,18 +8,20 @@ export default class PreviewOrder extends React.Component {
         gridItems: undefined
     }
 
-    componentWillReceiveProps(props) {
-        const { value } = props
-        this.setState({
-            gridItems: value.toJS()
-        })
+    // componentWillReceiveProps(props) {
+    // const { value } = props
+    // console.log("PREVIEW VALUE", value)
+    // this.setState({
+    //     gridItems: value.toJS()
+    // })
 
-    }
+    // }
 
     render() {
-        const { gridItems } = this.state
+        const { value } = this.props
+        const gridItems = value.toJS()
         if (!gridItems) {
-            return <p>Loading...</p>
+            return <p>Haha...</p>
         } else if (gridItems.length === 0) {
             return <p>No project added yet!</p>
         }

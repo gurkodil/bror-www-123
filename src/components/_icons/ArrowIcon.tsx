@@ -1,7 +1,15 @@
 
 import React from 'react'
 
-export default ({ fill, className, onClick, show }) =>
+interface Props extends React.SVGAttributes<SVGSVGElement> {
+    show: boolean
+}
+
+export default ({ fill,
+    className,
+    onClick,
+    show
+}: Props) =>
     <svg
         onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"

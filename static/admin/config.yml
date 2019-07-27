@@ -69,6 +69,9 @@ collections:
             editor:
               preview: true
             widget: order
+            searchFields: ["title", "thumbnail"] # Not used yet
+            valueField: "title" # Not used yet
+            displayFields: ["title", "thumbnail"] # Not used yet
             fields:
               - { label: "Thumbnail", name: "thumbnail", widget: "string" }
               - { label: "Project name", name: "title", widget: "string" }

@@ -1,11 +1,11 @@
 // @import "~bulma/sass/utilities/initial-variables"
 @import "./variables";
-@import "./menu";
-@import "./title";
 @import "./grid";
 @import "./project_page";
 @import "./splash_page";
 @import "./info_page";
+@import "./custom-link";
+@import "./header";
 
 body {
     font-family: "Nitti Normal", "Lato", sans-serif;
@@ -13,6 +13,9 @@ body {
     margin: 0px;
     padding: 0px;
 
+    @media screen and (max-width: 770px){
+        font-size: calc(24px + (26 - 2) * ((100vw - 300px) / (1600 - 300)));
+    }
   
     a {
         color: black;

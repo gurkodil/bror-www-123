@@ -7,9 +7,14 @@ body {
         padding-right: 10vw;
         padding-top: 80px;
 
-        figure {
+        figure.gridItem {
             cursor: pointer;
             text-align: center;
+            padding: 0rem;
+            // background-color: blue;
+            margin: 0.2rem;
+            padding: 1rem;
+            height: auto;
 
             // figcaption {
             //     margin-top: 0;

@@ -1,7 +1,12 @@
 import React, { useState, Fragment } from 'react'
-import MenuIcon from '../_icons/MenuIcon'
+import StyledLink from './_helpers/Link'
+import MenuIcon from './_icons/MenuIcon'
 
-const DialogMenu = ({ onClick }) =>
+interface Props {
+    onClick: (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+}
+
+const DialogMenu = ({ onClick }: Props) =>
     <div className="dialogMenu" onClick={onClick}>
 
         <a href="/monokel-eyewear-metro">Monokel eyewear / Metro</a><br />
@@ -19,33 +24,38 @@ const DialogMenu = ({ onClick }) =>
 
     </div>
 
-const Menu = props => {
+const Menu = () => {
     const [showMenu, setShowMenu] = useState(false)
 
     const toggleMenu = () => {
-        setShowMenu(prevShowMenu => {
+        setShowMenu(_ => {
             const newShowMenu = !showMenu
             newShowMenu ?
                 document.body.classList.add('modal-open') :
                 document.body.classList.remove('modal-open')
             return newShowMenu
         })
-
-
     }
 
     return (
         <Fragment>
             <MenuIcon
                 onClick={toggleMenu}
-                height={25}
-                width={25}
                 fill={'black'}
                 className={`menuIcon ${showMenu ? 'fa fa-menu-close' : 'fa fa-menu open'}`} />
-
             {showMenu && <DialogMenu onClick={toggleMenu} />}
         </Fragment>
     )
 }
 
-export default Menu
+const Title = () =>
+    <StyledLink href="/home/">Johan Wennerström</StyledLink>
+
+
+const NavBar = () =>
+    <header>
+        <Title />
+        <Menu />
+    </header>
+
+export default NavBar

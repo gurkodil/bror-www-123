@@ -8,7 +8,7 @@ const SplashPage = ({ data }) => {
     const videoUrl = markdownRemark.frontmatter.video
 
     return (
-        <Layout excludeMenu={true} excludeTitle={true}>
+        <Layout exludeNavBar={true}>
             <div className="parent" onClick={() => navigateTo('/home/')}>
                 <h1 className="gradient2">{title}</h1>
                 {videoUrl && <video playsInline="" autoPlay muted="" loop poster="" id="bgvid">

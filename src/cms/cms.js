@@ -7,7 +7,7 @@ import IndexPagePreview from './preview-templates/IndexPagePreview'
 import { OrderWidgetControl, PreviewOrderWidget } from './widgets/order'
 
 
-CMS.registerWidget('order', OrderWidgetControl, PreviewOrderWidget)
+// CMS.registerWidget('order', OrderWidgetControl, PreviewOrderWidget)
 
 CMS.registerMediaLibrary(uploadcare);
 

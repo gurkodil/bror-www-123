@@ -93,12 +93,8 @@ class ProjectPage extends React.Component {
 
     constructor(props) {
         super(props)
-        const images = props.data.markdownRemark.frontmatter.images
+        const images = props.images || props.data.markdownRemark.frontmatter.images
 
-
-
-        // const projectKey = props.match.params.project
-        // const projectImages = projects[projectKey]
         this.state = {
             imageIndex: 0,
             projectImages: images,

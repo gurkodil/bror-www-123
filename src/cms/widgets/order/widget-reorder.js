@@ -37,7 +37,12 @@ export default class OrderWidget extends React.Component {
         const { query, forID, value, onChange } = this.props
 
         // (forID, 'collectionName', ['idField'],
-        const result = await query(forID, 'project', ['title'], '')
+        // const result = await query(forID, 'project', ['title'], '')
+        console.log("RESULT SLUG", "HEJ")
+
+        const result = await query(forID, 'slug', ['slug'], '')
+        console.log("RESULT SLUG", result)
+
 
         const data = result.payload.response.hits.map(payload => {
             const { thumbnail, title } = payload.data
@@ -47,15 +52,21 @@ export default class OrderWidget extends React.Component {
             }
         })
 
+        if (!value) {
+            onChange(data)
+            this.setState({ data })
+            return
+        }
+
         const currentOrder = value.toJS()
-        const { newOrder/*, changed*/ } = diff({
-            currentOrder,
+        const { newOrder, changed } = diff({
             data,
+            currentOrder,
             key: 'title',
         })
 
         this.setState({ data: newOrder })
-        onChange(fromJS(newOrder))
+        if (changed) onChange(fromJS(newOrder))
     }
 
     handleDragEnd = result => {

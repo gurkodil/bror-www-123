@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import GridLayout from '../../components/helpers/GridLayout'
+import GridLayout from '../../components/GridLayout'
 import Layout from '../../components/Layout'
 import { navigateTo } from 'gatsby-link'
 import AOS from 'aos'
@@ -96,16 +96,15 @@ class HomePageGrid extends React.Component {
             <Layout>
                 <GridLayout columns={cols} gap={gap} className="grid">
                     {gridItems.map((gridItem, index) =>
-                        <figure onClick={() => navigateTo(gridItem.slug)}
+                        <figure onClick={() => navigateTo(gridItem.slug)} className={'gridItem'}
                             key={`gridItemKey${index}`}
-                            style={{ height: 'auto' }}
                         >
                             <img data-aos="fade-up" style={{ width: '100%' }} src={gridItem.thumbnail} alt={gridItem.title} />
                             <figcaption data-aos="fade-up">{gridItem.title}</figcaption>
                         </figure>
                     )}
                 </GridLayout>
-            </Layout>
+            </Layout >
         )
     }
 }
