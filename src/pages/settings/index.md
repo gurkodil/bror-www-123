@@ -13,5 +13,9 @@ projectPreviews:
     title: Project 6
   - thumbnail: 'https://ucarecdn.com/4a38cc9e-98f2-4169-b99a-74d3002cedd4/'
     title: Project 5
+  - thumbnail: 'https://ucarecdn.com/e7045f95-606b-4698-bc50-ad357b1436be/'
+    title: Project 7
+  - thumbnail: 'https://ucarecdn.com/cff722ea-3d37-4eed-917c-9f626dc794d2/'
+    title: Project X
 ---
 
