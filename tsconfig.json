@@ -46,3 +46,29 @@
 //         ".cache"
 //     ]
 // }
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        // uncomment the following lines if you are working with a mixed code base (both javascript and typescript. Useful when migrating a project)
+        "noImplicitAny": false, // true
+        "allowJs": true,
+        "esModuleInterop": true,
+        "module": "commonjs",
+        // "noEmit": true,
+        "target": "esnext",
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "outDir": "./dist/",
+    },
+    "include": [
+        "./src/**/*.js",
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ],
+    "exclude": [
+        "./node_modules",
+    ]
+}

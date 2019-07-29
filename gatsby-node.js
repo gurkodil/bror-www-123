@@ -40,7 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
                 path: slug,
                 tags: edge.node.frontmatter.tags,
                 component: path.resolve(
-                    `src/templates/${String(edge.node.frontmatter.templateKey)}${edge.node.frontmatter.templateKey === 'idsanfo-page' ? '.tsx' : '.js'}`
+                    `src/templates/${String(edge.node.frontmatter.templateKey)}${edge.node.frontmatter.templateKey === 'idsanfo-page' ? '.tsx' : '.tsx'}`
                 ),
                 // additional data can be passed via context
                 context: {

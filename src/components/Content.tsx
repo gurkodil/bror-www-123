@@ -1,13 +1,15 @@
-import React from 'react'
+import * as React from 'react'
 
 interface HTMLContentProps extends React.HTMLAttributes<HTMLDivElement> {
     content: {
         __html: string;
-    } | undefined
+    } | undefined,
+    className: string | undefined
 }
 
 interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
-    content: String | undefined
+    content: string | undefined
+    className: string | undefined
 }
 
 export const HTMLContent = ({ content, className }: HTMLContentProps) => (

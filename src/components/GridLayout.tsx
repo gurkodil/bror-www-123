@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react'
 
-interface GridProps {
+interface IGridProps {
     columns: number,
     gap: number,
-    children: Array<React.ReactNode>,
+    children: ReactNode[],
     className: string
 }
 
-const GridLayout = (props: GridProps) => {
+const GridLayout = (props: IGridProps) => {
     const columnWrapper: any = {}
     const result = []
     const { className } = props
@@ -34,7 +34,7 @@ const GridLayout = (props: GridProps) => {
                     flex: 1,
                 }}>
                 {columnWrapper[`column${i}`]}
-            </div>
+            </div>,
         )
     }
 
@@ -44,8 +44,5 @@ const GridLayout = (props: GridProps) => {
         </div>
     )
 }
-
-
-
 
 export default GridLayout

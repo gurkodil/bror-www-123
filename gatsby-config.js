@@ -75,6 +75,12 @@ module.exports = {
             },
         }, // must be after other CSS plugins
         "gatsby-plugin-typescript",
+        {
+            resolve: "gatsby-plugin-ts-loader",
+            options: {
+                tslint: true // false or exclude to disable tslint
+            }
+        },
         // {
         //     resolve: "gatsby-plugin-ts-loader",
         //     options: {
