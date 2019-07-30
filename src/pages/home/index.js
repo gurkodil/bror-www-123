@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
+import AOS from 'aos'
+import { navigate } from 'gatsby-link'
+import Img from 'gatsby-image'
 import GridLayout from '../../components/GridLayout'
 import Layout from '../../components/Layout'
-import { navigateTo } from 'gatsby-link'
-import AOS from 'aos'
 import "aos/dist/aos.css"
 
 class HomePageGrid extends React.Component {
@@ -14,46 +14,25 @@ class HomePageGrid extends React.Component {
         const { data } = props
         const { allMarkdownRemark } = data
 
+        this.aos = AOS
+
         /**
          * Get all unsorted projects
          */
         const gridItems = allMarkdownRemark.edges
-            .filter(edge => /\/home\/[/.a-zA-Z0-9-]+$/.test(edge.node.fields.slug))
             .map(edge => {
-                const slug = edge.node.fields.slug
-                const title = edge.node.frontmatter.title
-                const thumbnail = edge.node.frontmatter.thumbnail
+                const { slug } = edge.node.fields
+                const { thumbnail, title } = edge.node.frontmatter
+                const { gridPosition } = edge.node.fields
+            
                 return ({
                     title,
-                    thumbnail,
-                    slug
+                    thumbnail: thumbnail.childImageSharp,
+                    slug,
+                    gridPosition,
                 })
             })
-
-        /**
-         * Get the order of the projects
-         */
-        const order = allMarkdownRemark.edges
-            .filter(edge => edge.node.fields.slug === "/settings/")
-            .map(edge => edge.node.frontmatter.projectPreviews.map(prev => {
-                return {
-                    title: prev.title
-                }
-            }))[0]
-
-        /**
-         * Order the projects
-         */
-        order && order.forEach((item, index) => {
-            for (let i = gridItems.length - 1; i >= 0; i--) {
-                if (gridItems[i].title === item.title) {
-                    const elm = gridItems[i]
-
-                    gridItems[i] = gridItems[index]
-                    gridItems[index] = elm
-                }
-            }
-        })
+            .sort((a, b) => a.gridPosition > b.gridPosition)
 
         this.state = {
             gridItems,
@@ -62,7 +41,7 @@ class HomePageGrid extends React.Component {
     }
 
     componentDidMount() {
-        AOS.init({
+        this.aos.init({
             offset: 20,
             duration: 1550,
         })
@@ -76,12 +55,12 @@ class HomePageGrid extends React.Component {
         const { innerWidth: width, innerHeight: height } = window
         return {
             width,
-            height
+            height,
         }
     }
 
     componentWillReceiveProps() {
-        AOS.refresh()
+        this.aos.refresh()
     }
 
     render() {
@@ -89,18 +68,18 @@ class HomePageGrid extends React.Component {
         const { gridItems } = this.state
         const { width } = this.getWindowDimensions()
 
-        let cols = width < 770 ? 2 : 3
-        let gap = cols === 3 ? 5 : 3
+        const cols = width < 770 ? 2 : 3
+        const gap = cols === 3 ? 5 : 3
 
         return (
             <Layout>
                 <GridLayout columns={cols} gap={gap} className="grid">
                     {gridItems.map((gridItem, index) =>
-                        <figure onClick={() => navigateTo(gridItem.slug)} className={'gridItem'}
+                        <figure data-aos="fade-up" onClick={() => navigate(gridItem.slug)} className={'gridItem'}
                             key={`gridItemKey${index}`}
                         >
-                            <img data-aos="fade-up" style={{ width: '100%' }} src={gridItem.thumbnail} alt={gridItem.title} />
-                            <figcaption data-aos="fade-up">{gridItem.title}</figcaption>
+                            <Img style={{ width: '100%' }} fluid={gridItem.thumbnail.fluid} alt={gridItem.title} />
+                            <figcaption>{gridItem.title}</figcaption>
                         </figure>
                     )}
                 </GridLayout>
@@ -112,23 +91,49 @@ class HomePageGrid extends React.Component {
 export default HomePageGrid
 
 export const allProjectsQuery = graphql`
-query allProjectsQuery {
-    allMarkdownRemark(filter: {frontmatter: {templateKey: {regex: "/(projects|settings)-page/"}}}) {
+query queryGrid {
+    allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "projects-page"}}}) {
       edges {
         node {
           fields {
             slug
+            gridPosition
           }
           frontmatter {
-            projectPreviews {
-              title
-              thumbnail
-            }
             title
-            thumbnail
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                    ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
     }
   }
 `
+
+
+// `
+// query allProjectsQuery {
+//     allMarkdownRemark(filter: {frontmatter: {templateKey: {regex: "/(projects|settings)-page/"}}}) {
+//       edges {
+//         node {
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             projectPreviews {
+//               title
+//               thumbnail
+//             }
+//             title
+//             thumbnail
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

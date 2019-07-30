@@ -1,3 +1,4 @@
+/* eslint-disable */
 var proxy = require('http-proxy-middleware')
 
 module.exports = {
@@ -61,6 +62,7 @@ module.exports = {
                 ],
             },
         },
+        "remote-image-loader",
         {
             resolve: 'gatsby-plugin-netlify-cms',
             options: {
@@ -73,14 +75,26 @@ module.exports = {
                 develop: true, // Activates purging in npm run develop
                 purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
             },
-        }, // must be after other CSS plugins
-        "gatsby-plugin-typescript",
-        {
-            resolve: "gatsby-plugin-ts-loader",
-            options: {
-                tslint: true // false or exclude to disable tslint
-            }
         },
+        {
+            resolve: `gatsby-plugin-remote-images`,
+            options: {
+                // nodeType: 'frontmatter.thumbnail',
+                imagePath: '',
+            },
+        },
+        // must be after other CSS plugins
+        "gatsby-plugin-typescript",
+        // `gatsby-transformer-sharp`,
+        // `gatsby-plugin-sharp`,
+        // {
+        //     resolve: "gatsby-plugin-ts-loader",
+        //     options: {
+        //         tslint: true // false or exclude to disable tslint
+        //     }
+        // },
+        // 
+
         // {
         //     resolve: "gatsby-plugin-ts-loader",
         //     options: {

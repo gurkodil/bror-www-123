@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from 'react'
+import * as React from 'react'
+import { useState, Fragment } from 'react'
 import StyledLink from './_helpers/Link'
 import MenuIcon from './_icons/MenuIcon'
 

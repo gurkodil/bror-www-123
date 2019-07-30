@@ -2,7 +2,10 @@ import * as React from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import styled from '@emotion/styled'
 import { fromJS } from 'immutable'
+import PropTypes from 'prop-types'
 import { reorder, diff } from '../utils'
+
+
 
 const StyledBackground = styled.div`
   background: ${({ isDraggingOver }) =>
@@ -27,7 +30,9 @@ const StyledItem = styled.div`
             : '0 2px 6px 0 rgba(0, 0, 0, 0.2)'};
 `
 
-export default class OrderWidget extends React.Component {
+
+
+class OrderWidget extends React.Component {
 
     state = {
         data: [],
@@ -36,13 +41,8 @@ export default class OrderWidget extends React.Component {
     async componentDidMount() {
         const { query, forID, value, onChange } = this.props
 
-        // (forID, 'collectionName', ['idField'],
-        // const result = await query(forID, 'project', ['title'], '')
-        console.log("RESULT SLUG", "HEJ")
 
-        const result = await query(forID, 'slug', ['slug'], '')
-        console.log("RESULT SLUG", result)
-
+        const result = await query(forID, 'project', ['title'], '')
 
         const data = result.payload.response.hits.map(payload => {
             const { thumbnail, title } = payload.data
@@ -106,12 +106,12 @@ export default class OrderWidget extends React.Component {
                                     draggableId={item.title}
                                     index={i}
                                 >
-                                    {(provided, snapshot) => (
+                                    {(providedChild, snapshotChild) => (
                                         <StyledItem
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            isDragging={snapshot.isDragging}
+                                            ref={providedChild.innerRef}
+                                            {...providedChild.draggableProps}
+                                            {...providedChild.dragHandleProps}
+                                            isDragging={snapshotChild.isDragging}
                                         >
                                             <div>
                                                 <img style={{ width: '50px', height: '50px', verticalAlign: 'middle' }} src={item.thumbnail} alt={item.title} />
@@ -128,3 +128,12 @@ export default class OrderWidget extends React.Component {
         )
     }
 }
+
+OrderWidget.propTypes = {
+    query: PropTypes.func.isRequired,
+    forID: PropTypes.string.isRequired,
+    value: PropTypes.object,
+    onChange: PropTypes.func.isRequired
+}
+
+export default OrderWidget

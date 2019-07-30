@@ -5,7 +5,7 @@ import ProjectPage from './projects-page'
 /**
  * Renders all projects included in the portfolio via @template ProjectPage
  */
-const PortfolioPage = () => {
+const PortfolioPage = (): React.ReactNode => {
     return (<StaticQuery
         query={graphql`
     query allPortfoliosQuery {
@@ -14,7 +14,13 @@ const PortfolioPage = () => {
             node {
               frontmatter {
                 title
-                images
+              }
+              childrenFile {
+                childImageSharp {
+                    sizes(maxWidth: 1240) {
+                        ...GatsbyImageSharpSizes
+                      }
+                }
               }
             }
           }
@@ -22,10 +28,14 @@ const PortfolioPage = () => {
       }
     `}
         render={(data) => {
-            const edges = data.allMarkdownRemark.edges
+            const {edges} = data.allMarkdownRemark
             return (
-                edges.map((edge: PropsEdge, i: number) =>
-                    <ProjectPage key={`portIndex${i}`} images={edge.node.frontmatter.images} />)
+                <div>
+                    {
+                        edges.map((edge: PropsEdge, i: number) =>
+                            <ProjectPage key={`portIndex${i}`} images={edge.node.childrenFile} />)
+                    }
+                </div>
             )
         }}
     />)
@@ -33,9 +43,7 @@ const PortfolioPage = () => {
 
 interface PropsEdge {
     node: {
-        frontmatter: {
-            images: string[]
-        }
+        childrenFile: any[]
     }
 }
 

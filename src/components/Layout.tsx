@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import NavBar from './NavBar'
 import useSiteMetadata from './SiteMetadata'
@@ -14,7 +14,7 @@ const TemplateWrapper = ({ children, exludeNavBar }: IProps) => {
 
     const { title, description } = useSiteMetadata()
     return (
-        <Fragment>
+        <React.Fragment>
             <Helmet>
                 <html lang='en' />
                 <title>{title}</title>
@@ -50,7 +50,7 @@ const TemplateWrapper = ({ children, exludeNavBar }: IProps) => {
             </Helmet>
             {!exludeNavBar && <NavBar />}
             <div>{children}</div>
-        </Fragment>
+        </React.Fragment>
     )
 }
 

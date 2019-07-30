@@ -1,39 +1,39 @@
 {
-    "extends": "tslint:recommended",
-    "rules": {
-        "quotemark": [
-            true,
-            "single",
-            "jsx-single",
-            "avoid-escape"
-        ],
-        "semicolon": false,
-        "ordered-imports": [
-            false
-        ],
-        "object-literal-sort-keys": [
-            false
-        ],
-        "interface-name": false,
-        "trailing-comma": [
-            true,
-            {
-                "singleline": "ignore",
-                "multiline": {
-                    "objects": "ignore",
-                    "arrays": "ignore",
-                    "functions": "ignore",
-                    "typeLiterals": "ignore"
-                }
-            }
-        ]
-    },
-    "parserOptions": {
-        "ecmaVersion": 6
-    },
-    "linterOptions": {
-        "exclude": [
-            "src/**/*.js"
-        ]
-    }
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [
+      true,
+      "single",
+      "jsx-single",
+      "avoid-escape"
+    ],
+    "semicolon": false,
+    "ordered-imports": [
+      false
+    ],
+    "object-literal-sort-keys": [
+      false
+    ],
+    "interface-name": false,
+    "trailing-comma": [
+      true,
+      {
+        "singleline": "ignore",
+        "multiline": {
+          "objects": "ignore",
+          "arrays": "ignore",
+          "functions": "ignore",
+          "typeLiterals": "ignore"
+        }
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "linterOptions": {
+    "exclude": [
+      "src/**/*.js"
+    ]
+  }
 }

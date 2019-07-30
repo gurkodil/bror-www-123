@@ -1,4 +1,5 @@
-import React from 'react'
+import * as React from 'react'
+import PropTypes from 'prop-types'
 import GridLayout from '../../../components/GridLayout'
 
 
@@ -8,21 +9,14 @@ export default class PreviewOrder extends React.Component {
         gridItems: undefined
     }
 
-    // componentWillReceiveProps(props) {
-    // const { value } = props
-    // console.log("PREVIEW VALUE", value)
-    // this.setState({
-    //     gridItems: value.toJS()
-    // })
-
-    // }
-
     render() {
         const { value } = this.props
         const gridItems = value.toJS()
         if (!gridItems) {
             return <p>Haha...</p>
-        } else if (gridItems.length === 0) {
+        }
+
+        if (gridItems.length === 0) {
             return <p>No project added yet!</p>
         }
 
@@ -44,4 +38,8 @@ export default class PreviewOrder extends React.Component {
             </GridLayout>
         )
     }
+}
+
+PreviewOrder.propTypes = {
+    value: PropTypes.object
 }
