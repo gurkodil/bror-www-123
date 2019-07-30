@@ -3,6 +3,8 @@ templateKey: settings-page
 projectPreviews:
   - thumbnail: 'https://ucarecdn.com/13acf1b8-ead8-4572-bd3a-3942ac7c2f3b/'
     title: Project 2
+  - thumbnail: 'https://ucarecdn.com/cff722ea-3d37-4eed-917c-9f626dc794d2/'
+    title: Project X
   - thumbnail: 'https://ucarecdn.com/aaa5fbd0-e383-40c2-b422-36d712fba641/'
     title: Project 4
   - thumbnail: 'https://ucarecdn.com/27dd9938-0627-4213-b800-372d5a6b6c5f/'
@@ -15,7 +17,5 @@ projectPreviews:
     title: Project 5
   - thumbnail: 'https://ucarecdn.com/e7045f95-606b-4698-bc50-ad357b1436be/'
     title: Project 7
-  - thumbnail: 'https://ucarecdn.com/cff722ea-3d37-4eed-917c-9f626dc794d2/'
-    title: Project X
 ---
 
