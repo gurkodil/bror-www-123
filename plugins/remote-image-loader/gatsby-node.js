@@ -48,11 +48,9 @@ exports.onCreateNode = async ({
             });
 
             if (thumbnailNode) {
-                // delete node.thumbnail;
-                // delete node.thumbnail___NODE;
-                // delete node.thumbnail___NODE;
-
-                node.frontmatter.thumbnail___NODE = thumbnailNode.id;
+                delete node.frontmatter.thumbnail
+                console.log("DELETED NODE WITH ID", thumbnailNode.id)
+                node.frontmatter.thumbnail___NODE = thumbnailNode.id
             }
         } catch (e) {
             // Ignore

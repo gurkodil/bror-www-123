@@ -8,6 +8,7 @@ module.exports = {
             'photographer',
     },
     plugins: [
+        'gatsby-plugin-typescript',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sass',
         {
@@ -84,7 +85,6 @@ module.exports = {
             },
         },
         // must be after other CSS plugins
-        "gatsby-plugin-typescript",
         // `gatsby-transformer-sharp`,
         // `gatsby-plugin-sharp`,
         // {

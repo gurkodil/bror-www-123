@@ -2,7 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import GridLayout from '../../../components/GridLayout'
 
-
 export default class PreviewOrder extends React.Component {
 
     state = {
