@@ -33,6 +33,7 @@ body {
         .gatsby-image-wrapper {
             width: 80% !important;
             max-height: 100%;
+            z-index: -1;
             
         }
 
@@ -70,4 +71,27 @@ body {
             }
         }
     }
+}
+
+@media only screen and (max-width: 770px) {
+  body {
+    .project-container {
+    .image-container {
+      max-width: 98vw;
+      width: 100vw;
+      height: 100vw;
+      max-height: 100vw;
+    }
+
+    .gatsby-image-wrapper {
+      width: 100% !important;
+      max-height: 100%;
+  }
+
+
+  .arrow-icon {
+    display: none;
+}
+  }
+}
 }
