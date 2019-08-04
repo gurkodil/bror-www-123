@@ -17,13 +17,13 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Template key", name: "templateKey", widget: "hidden", default: "projects-page"}
-      - { name: id, widget: hidden, default: "{{uuid}}" }
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Include in portfolio", name: "includeInPortfolio", widget: "boolean", default: false}
       - {label: "Include in menu", name: "includeInMenu", widget: "boolean", default: false}
       - {label: "Thumbnail", name: "thumbnail", widget: "image", media_library: { config: { multiple: false, previewStep: false }}}
       - {label: "Images", name: "images", widget: "image", media_library: { config: { multiple: true, previewStep: false }}}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: ID, name: id, widget: ncw-id, prefix: projects, hint: read-only id}
 
 
   # - name: 'settings'
@@ -68,13 +68,13 @@ collections:
             collection: project
             editor:
               preview: true
-            widget: order
-            searchFields: ["title", "thumbnail"] # Not used yet
-            valueField: "title" # Not used yet
-            displayFields: ["title", "thumbnail"] # Not used yet
+            widget: ncw-reorder
+            id_field: id
+            display_fields: ["title", "thumbnail"] # Not used yet
             fields:
-              - { label: "Thumbnail", name: "thumbnail", widget: "string" }
-              - { label: "Project name", name: "title", widget: "string" }
+            #   - { label: "Thumbnail", name: "thumbnail", widget: "string" }
+            #   - { label: "Project name", name: "title", widget: "string" }
+              - { label: "Id", name: "id", widget: "string" }
 
 
 

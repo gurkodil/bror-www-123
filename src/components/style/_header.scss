@@ -1,6 +1,6 @@
 
 $headerSpacing: 0vw;
-$fontSizeTitle: 0.55rem;
+$fontSizeTitle: 0.5rem;
 $headerPadding: 1rem;
 
 body {
@@ -9,6 +9,8 @@ body {
         position: fixed;
         display: flex;
         z-index: 101;
+        // background: white;
+        // border-bottom: 1px solid black;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;

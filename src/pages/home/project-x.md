@@ -1,6 +1,5 @@
 ---
 templateKey: projects-page
-id: '{{uuid}}'
 title: Project X
 includeInPortfolio: true
 includeInMenu: false
@@ -11,5 +10,6 @@ images:
   - 'https://ucarecdn.com/aabca5f7-da35-45a4-9865-da11d7b13d24~3/nth/2/'
 tags:
   - sgs
+id: project-GQnCNUpF8
 ---
 

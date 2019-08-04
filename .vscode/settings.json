@@ -10,7 +10,7 @@
         "**/public": true
     },
     "editor.rulers": [80],
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "prettier.tabWidth": 4,
     "prettier.eslintIntegration": true,
     "prettier.stylelintIntegration": true,
