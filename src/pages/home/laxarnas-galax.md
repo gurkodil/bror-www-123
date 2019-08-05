@@ -1,6 +1,6 @@
 ---
 templateKey: projects-page
-title: Laxarnas galax
+title: Project 1
 includeInPortfolio: true
 includeInMenu: false
 thumbnail: 'https://ucarecdn.com/857d37fd-7f39-4e31-904a-988939c03e41/'

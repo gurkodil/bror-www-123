@@ -1,6 +1,6 @@
 ---
 templateKey: projects-page
-title: Project X2000
+title: Project 8
 includeInPortfolio: true
 includeInMenu: false
 thumbnail: 'https://ucarecdn.com/dd9279df-897c-4e6b-b84c-05af896dd5da/'

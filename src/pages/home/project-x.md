@@ -1,6 +1,6 @@
 ---
 templateKey: projects-page
-title: Project XY
+title: Project 9
 includeInPortfolio: true
 includeInMenu: false
 thumbnail: 'https://ucarecdn.com/cff722ea-3d37-4eed-917c-9f626dc794d2/'
