@@ -5,7 +5,7 @@ interface Props extends React.SVGAttributes<SVGSVGElement> {
     show: boolean
 }
 
-export default ({ fill,
+const ArrowIcon = ({ fill,
     className,
     onClick,
     show
@@ -32,3 +32,5 @@ export default ({ fill,
             height='283.5'
         />
     </svg>
+
+export default ArrowIcon
