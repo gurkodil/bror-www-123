@@ -20,7 +20,7 @@ export default class PreviewOrder extends React.Component {
         }
 
         return (
-            <GridLayout columns={3} gap={5} className="grid">
+            <GridLayout columns={2} gap={0} className="grid">
                 {gridItems.map((gridItem, index) =>
                     <figure
                         key={`gridKey${index}`}
@@ -31,7 +31,7 @@ export default class PreviewOrder extends React.Component {
                             src={gridItem.thumbnail}
                             alt={gridItem.title}
                         />
-                        <figcaption>{gridItem.title}</figcaption>
+                        <figcaption style={{ textAlign: 'center', fontFamily: 'Nitti Normal, Lato, sans-serif', fontSize: '12px' }}>{gridItem.title}</figcaption>
                     </figure>
                 )}
             </GridLayout>

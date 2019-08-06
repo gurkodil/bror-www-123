@@ -15,7 +15,7 @@ export default ({ fill,
         xmlns='http://www.w3.org/2000/svg'
         fill={fill}
         className={className}
-        style={{ opacity: show ? 1.0 : 0.0 }}
+        style={{ visibility: show ? 'visible' : 'hidden' }}
         viewBox='0 0 222.2 401.8'>
         <rect
             x='-30.6'

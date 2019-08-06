@@ -21,13 +21,23 @@ exports.onCreateNode = async ({
     createNodeId,
 }) => {
     if (node.frontmatter && node.frontmatter.templateKey === 'projects-page') {
-        const { thumbnail: thumbnailUrl, images: ImageUrls, title: projectName } = node.frontmatter
+        const {
+            thumbnail: thumbnailUrl,
+            images: ImageUrls,
+            title: projectName,
+            id: currentID
+        } = node.frontmatter
+
         const orderNode = getNodes()
             .find(node => node.frontmatter
                 && node.frontmatter.templateKey == 'settings-page')
 
         const maxGridIndex = orderNode && orderNode.frontmatter.projectPreviews.length
-        const gridIndex = orderNode && orderNode.frontmatter.projectPreviews.findIndex(preview => preview.title === projectName)
+        console.log("currentID", currentID)
+        const gridIndex = orderNode && orderNode.frontmatter.projectPreviews.findIndex(preview => {
+            console.log("PREVIOS.ID", preview.id)
+            return preview.id === currentID
+        })
 
         await createNodeField({
             node: node,

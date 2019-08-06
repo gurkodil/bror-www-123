@@ -1,11 +1,47 @@
+$paddingFullSizeWidth: 5vw;
+$paddingFullSizeHeight: 5vh;
+
+$paddingSmallScreenWidth: 0vw;
+$paddingSmallScreenHeight: 0vh;
+
 body {
-    .project-container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
+    section.project-container {
+        width: 100vw - 2 * $paddingFullSizeWidth;
+        height: 100vh - 2 * $paddingFullSizeHeight;
+        padding-left: $paddingFullSizeWidth;
+        padding-right: $paddingFullSizeWidth;
+        padding-top: $paddingFullSizeHeight;
+        padding-bottom: $paddingFullSizeHeight;
+
+        // background: green;
+
+        display: grid;
+        grid-gap: 0px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         align-items: center;
-        flex-direction: column;
+
+        figure {
+            /* Span full width */
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 1;
+            // border: 5px solid blue;
+
+            display: grid;
+            margin: auto;
+            
+            height: 80vh;
+            width: 80vw;
+        
+
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
 
         button {
             background-color: transparent;
@@ -13,87 +49,74 @@ body {
             border: none;
             cursor:pointer;
             overflow: hidden;
-            background: rgba(255, 255, 0, 0.397);
             outline:none;
-
-            width: calc(65vw / 2);
-            // height: 70vh;
+            z-index: 11;
             overflow: hidden;
-            position: absolute;
+            margin: 0;
+            // background: rgba(255, 255, 0, 0.493);
+            height: 80vh;
+
+            &:hover, &:focus, &:active {
+                background: transparent;
+            }
 
             .arrow-icon {
-                opacity: 0;
-                transition: 0.3s ease-in;
+                // opacity: 0;
+                // transition: 0.3s ease-in;
                 height: 2rem;
                 margin: 1rem;
                 fill: $linkColor
             }
         }
 
-
-        .gatsby-image-wrapper {
-            width: 500px !important;
-            max-height: 100%;
-            z-index: 1;
-            border: 5px solid red;            
+        button.next {
+            text-align: right;
+            /* Place in right */
+            grid-column: 2;
+            grid-row: 1;
         }
 
-        .image-container {
-            // max-width: 100vw;
-            // width: 70vw;
-            height: 70vh;
-            cursor: pointer;
-            background: rgba(0, 255, 98, 0.966);
-            // max-height: 70vh;
+        button.prev {
+            text-align: left;
+            /* Place in left */
+            grid-column: 1;
+            grid-row: 1;
+
+            .arrow-icon.left {
+                transform: rotate(180deg);
+            }
+        }
+
+        .gatsby-image-outer-wrapper, .gatsby-image-wrapper {
+            // border: 1px solid red;
+            z-index: -1;
+           
+
+            // height: 80%;
+            // width: auto;
         
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            &:hover {
-                .arrow-icon {
-                    opacity: 1;
-                }
-            }
-
-    
-            button.next {
-                transform: translateX(50%);
-                text-align: right;
-            }
-    
-            button.prev {
-                transform: translateX(-50%);
-                text-align: left;
-
-                .arrow-icon.left {
-                    transform: rotate(180deg);
-                }
-            }
         }
     }
 }
 
 @media only screen and (max-width: 770px) {
-  body {
-    .project-container {
-    .image-container {
-      max-width: 98vw;
-      width: 100vw;
-      height: 100vw;
-      max-height: 100vw;
+    body {
+        section.project-container {
+            width: 100vw; // - $paddingSmallScreenWidth;
+            height: 100vh;
+            padding-left: 0;
+            padding-right: 0;
+            // border: 2px solid yellow;
+
+            figure {
+                width: 90vw;
+                height: 90vh;
+            }
+            
+            /* Don't diplay arrow icons on small screens */
+            .arrow-icon {
+                display: none;
+            }
+        } 
     }
-
-    .gatsby-image-wrapper {
-      width: 100% !important;
-      max-height: 100%;
-  }
-
-
-  .arrow-icon {
-    display: none;
-}
-  }
-}
 }
