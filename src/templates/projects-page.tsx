@@ -135,7 +135,7 @@ class ProjectPage extends React.Component<IProps, IState> {
 
         const { imageParentWidth, imageParentHeight } = this.state
         const dispRatio = imageParentHeight > 0 ? imageParentWidth / imageParentHeight : 1.0
-        const imgRatio = image ? image.fluid.aspectRatio : 1
+        const imgRatio = image && image.fluid ? image.fluid.aspectRatio : 1
 
         // (original height / original width) x new width = new height
         const getHeight = (scale) => (1 / imgRatio) * imageParentWidth * scale
