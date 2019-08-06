@@ -167,7 +167,7 @@ class ProjectPage extends React.Component<IProps, IState> {
                             React.KeyboardEvent<HTMLElement>) => this.handleKeyPress(keyCode)}
                     // style={{ pointerEvents: isUsingKeys ? 'none' : 'auto' }}
                 >
-                    { image && <Img
+                    { image && image.fluid && image.fluid.aspectRatio && <Img
                         style={imgStyle}
                             // style={{
                         //     ...imgStyle,
