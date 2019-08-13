@@ -21,19 +21,21 @@ body {
         grid-template-rows: 1fr;
         align-items: center;
 
+
         figure {
             /* Span full width */
             grid-column-start: 1;
             grid-column-end: 3;
             grid-row-start: 1;
             grid-row-end: 1;
-            // border: 5px solid blue;
 
             display: grid;
             margin: auto;
             
             height: 80vh;
             width: 80vw;
+
+            // border: 1px solid blue;
         
 
             align-items: center;
@@ -56,16 +58,13 @@ body {
             // background: rgba(255, 255, 0, 0.493);
             height: 80vh;
 
-            &:hover, &:focus, &:active {
-                background: transparent;
-            }
-
             .arrow-icon {
                 // opacity: 0;
                 // transition: 0.3s ease-in;
                 height: 2rem;
                 margin: 1rem;
-                fill: $linkColor
+                fill: $linkColor;
+
             }
         }
 

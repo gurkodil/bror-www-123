@@ -33,7 +33,9 @@ const lax = () => {
         plugins: ["@typescript-eslint", "react", "prettier"],
         parserOptions: {
             ecmaFeatures: {
-                jsx: true
+                jsx: true,
+                experimentalObjectRestSpread: true,
+
             },
             ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
             sourceType: "module" // Allows for the use of imports
@@ -43,9 +45,12 @@ const lax = () => {
             semi: [ERROR, "never"],
             "space-before-blocks": OFF,
             "import/no-unresolved": OFF,
+            "no-unused-vars": "off",
             "comma-style": [ERROR, "last"],
             quotes: OFF,
             "no-extra-semi": OFF,
+            "display-name": OFF,
+            "react/prop-types": 0,
             "no-plusplus": [2, { allowForLoopAfterthoughts: true }],
             "class-methods-use-this": [
                 "error",

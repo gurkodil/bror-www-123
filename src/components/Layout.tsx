@@ -49,7 +49,7 @@ const TemplateWrapper = ({ children, exludeNavBar }: IProps) => {
                 {/* <meta property='og:image' content='/img/og-image.jpg' /> */}
             </Helmet>
             {!exludeNavBar && <NavBar />}
-            <div>{children}</div>
+            {children}
         </React.Fragment>
     )
 }

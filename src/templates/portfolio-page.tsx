@@ -1,11 +1,25 @@
-import * as React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import ProjectPage from './projects-page'
-
 /**
- * Renders all projects included in the portfolio via @template ProjectPage
- */
+|--------------------------------------------------
+| Renders multiple projects that are marked are
+| part of the portfolio.
+|--------------------------------------------------
+*/
+
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import { ProjectPageTemplate as Template } from './projects-page'
+import Layout from '../components/Layout'
+import { PortfolioPageProps, FluidImage } from '../interfaces/gatsby-image.interface'
+
+
 const PortfolioPage = (): React.ReactNode => {
+    const processQueryData = (data: PortfolioPageProps): FluidImage[][] => {
+        return data.allMarkdownRemark.edges
+            .map(edge => 
+                edge.node.childrenFile
+                    .map(file => file.childImageSharp.fluid))
+    }
+    
     return (<StaticQuery
         query={graphql`
     query allPortfoliosQuery {
@@ -17,9 +31,9 @@ const PortfolioPage = (): React.ReactNode => {
               }
               childrenFile {
                 childImageSharp {
-                    sizes(maxWidth: 1240) {
-                        ...GatsbyImageSharpSizes
-                      }
+                    fluid(maxWidth: 1200) {
+                        ...GatsbyImageSharpFluid
+                    }
                 }
               }
             }
@@ -27,24 +41,19 @@ const PortfolioPage = (): React.ReactNode => {
         }
       }
     `}
-        render={(data) => {
-            const {edges} = data.allMarkdownRemark
+        render={(data: PortfolioPageProps) => {
+            const allImages = processQueryData(data)
+
             return (
-                <div>
-                    {
-                        edges.map((edge: PropsEdge, i: number) =>
-                            <ProjectPage key={`portIndex${i}`} images={edge.node.childrenFile} />)
+                <Layout>
+                    { 
+                        allImages.map((images, i: number) => 
+                            <Template key={`p-${i}`} images={images} />)
                     }
-                </div>
+                </Layout>
             )
         }}
     />)
-}
-
-interface PropsEdge {
-    node: {
-        childrenFile: any[]
-    }
 }
 
 export default PortfolioPage

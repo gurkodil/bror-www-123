@@ -1,10 +1,16 @@
 
-    .grid {
-        overflow: hidden;
+    main.grid {
         background-color: white;
         padding-left: 10vw;
         padding-right: 10vw;
-        padding-top: 2rem;
+        padding-top: 10vh;
+        min-height: 90vh;
+        display: flex;
+        padding-bottom: 10vh;
+
+        div {
+            flex: 1;
+        }
 
         figure {
             cursor: pointer;

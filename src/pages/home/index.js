@@ -68,11 +68,9 @@ class HomePageGrid extends React.Component {
         const { width } = this.getWindowDimensions()
 
         const cols = width < 770 ? 2 : 3
-        const gap = cols === 3 ? 5 : 3
-
         return (
             <Layout>
-                <GridLayout columns={cols} gap={gap} className="grid">
+                <GridLayout columns={cols} className="grid">
                     {gridItems.map((gridItem, index) =>
                         <figure data-aos="fade-up" onClick={() => navigate(gridItem.slug)} className={'gridItem'}
                             key={`gridItemKey${index}`}
