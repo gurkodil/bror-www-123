@@ -52,7 +52,7 @@ export interface ContextInterface {
     index?: number,
     showKeys?: boolean,
     setShowKeys?: (showKeys: boolean) => void,
-    getImage?: () => ImageProps,
+    getImage?: () => FluidImage,
 }
 
 type ChildImageSharp = {
@@ -73,5 +73,18 @@ export interface ProjectPageProps extends FluidImageProps {
             }
             childrenFile?: ChildImageSharp[]
         }
+    }
+}
+
+export interface PortfolioPageProps {
+    allMarkdownRemark: {
+        edges: {
+            node: {
+                childrenFile: ChildImageSharp[],
+                frontmatter: {
+                    title: string
+                }
+            }
+        }[]
     }
 }
