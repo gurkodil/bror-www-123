@@ -1,14 +1,15 @@
 ---
 templateKey: settings-page
 projectPreviews:
-  - id: projects-1cy-UFxJu
-  - id: projects-KPsvl1m0F
-  - id: projects-PigTmhQBq
-  - id: projects-n0nX9x7eq
-  - id: projects-1YZte8tpf
-  - id: projects-YHuKu2k3B
-  - id: project-FKDEuskfO
-  - id: project-kICsAsoFs
-  - id: projects-LaxtHvfqBd
+  - projects-1cy-UFxJu
+  - projects-kjE6OilRP
+  - projects-KPsvl1m0F
+  - projects-PigTmhQBq
+  - projects-n0nX9x7eq
+  - projects-1YZte8tpf
+  - projects-YHuKu2k3B
+  - project-FKDEuskfO
+  - project-kICsAsoFs
+  - projects-LaxtHvfqBd
 ---
 
